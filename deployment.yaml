@@ -18,8 +18,8 @@ spec:
       - name: custom
         image: saphoooo/fake-logs-app:latest
         command: ['/fake-logs-app']
-        args: ['-f 1']
+        args: ['-f', '1']
       - name: nginx
         image: saphoooo/fake-logs-app:latest
         command: ['/fake-logs-app']
-        args: ['-f 1', '-o nginx']
+        args: ['-o', 'nginx', '-f', '2']
