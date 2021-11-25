@@ -36,19 +36,19 @@ func main() {
 }
 
 func randPrefix() string {
-	prefix := []string{"[EMERG] ", "[WARN] ", "[ERROR] ", "[INFO] ", "[DEBUG] "}
-	n := rand.Intn(5)
+	prefix := []string{"[EMERG] ", "[WARN] ", "[ERROR] ", "[ERROR] ", "[TRACE] ", "[INFO] ", "[INFO] ", "[INFO] ", "[INFO] ", "[DEBUG] "}
+	n := rand.Intn(10)
 	return prefix[n]
 }
 
 func randClient() string {
-	client := []string{"curl/7.74.0", "curl/7.64.1", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) Gecko/20100101 Firefox/94.0"}
-	n := rand.Intn(5)
+	client := []string{"curl/7.74.0", "curl/7.64.1", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) Gecko/20100101 Firefox/94.0", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) Gecko/20100101 Firefox/94.0", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) Gecko/20100101 Firefox/94.0"}
+	n := rand.Intn(10)
 	return client[n]
 }
 func randReturnCode() string {
-	methods := []string{"200", "301", "401", "404", "500"}
-	n := rand.Intn(5)
+	methods := []string{"200", "200", "200", "200", "200", "200", "301", "401", "404", "500"}
+	n := rand.Intn(10)
 	return methods[n]
 }
 
@@ -59,8 +59,8 @@ func randMethod() string {
 }
 
 func randPath() string {
-	path := []string{"/", "/api", "/api/items", "/api/checkout", "/login"}
-	n := rand.Intn(5)
+	path := []string{"/", "/", "/", "/api", "/api", "/status", "/api/items", "/api/checkout", "/login", "/logout"}
+	n := rand.Intn(10)
 	return path[n]
 }
 
