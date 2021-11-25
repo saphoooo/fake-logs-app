@@ -23,4 +23,4 @@ LABEL maintainer="stephane.beuret@gmail.com"
 
 COPY --from=0 fake-logs-app /
 
-ENTRYPOINT ["/fake-logs-app"]
+CMD ["/fake-logs-app"]
