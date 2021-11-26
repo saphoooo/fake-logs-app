@@ -21,7 +21,7 @@ func main() {
 		// exemaple output: '10.0.1.182 - - [25/Nov/2021:08:54:53 +0000] "GET / HTTP/1.1" 200 615 "-" "curl/7.74.0" "-"'
 		for {
 
-			fmt.Printf("172.17.0.3 - - [%v] \"%s %s HTTP/1.1\" %s %s \"http://example.com/\" \"%s\" \"%s\"\n", time.Now().Format("2006/01/02:15:04:05 +0000"), randMethod(), randPath(), randReturnCode(), strconv.Itoa(rand.Intn(999-200)+200), randClient(), randAddress())
+			fmt.Printf("172.17.0.3 - - [%v] \"%s %s HTTP/1.1\" %s %s \"http://example.com/\" \"%s\" \"%s\"\n", time.Now().Format("02/Jan/2006:15:04:05 +0000"), randMethod(), randPath(), randReturnCode(), strconv.Itoa(rand.Intn(999-200)+200), randClient(), randAddress())
 			time.Sleep(time.Second * time.Duration(*frequency))
 		}
 	case "custom":

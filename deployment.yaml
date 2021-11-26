@@ -1,25 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fake-logs-app
+  name: fake-logs-back
   labels:
-    app: fake-logs-app
+    app: fake-logs-back
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fake-logs-app
+      app: fake-logs-back
   template:
     metadata:
       labels:
-        app: fake-logs-app
+        app: fake-logs-back
     spec:
       containers:
       - name: custom
         image: saphoooo/fake-logs-app:latest
         command: ['/fake-logs-app']
         args: ['-f', '1']
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fake-logs-front
+  labels:
+    app: fake-logs-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fake-logs-front
+  template:
+    metadata:
+      labels:
+        app: fake-logs-front
+    spec:
+      containers:
       - name: nginx
         image: saphoooo/fake-logs-app:latest
         command: ['/fake-logs-app']
-        args: ['-o', 'nginx', '-f', '2']
+        args: ['-o', 'nginx', '-f', '1']
