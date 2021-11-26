@@ -12,7 +12,7 @@ import (
 
 func main() {
 	format := flag.String("o", "custom", "log format syle (nginx|custom)")
-	frequency := flag.Int("f", 5, "log frequency in second")
+	frequency := flag.Int("f", 5, "log frequency in seconds")
 	flag.Parse()
 	rand.Seed(time.Now().UTC().UnixNano())
 
