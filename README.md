@@ -25,7 +25,7 @@ However, you can change this behavior with args:
 $ ./fake-logs-app -h
 Usage of ./fake-logs-app:
   -f int
-    	log frequency in second (default 5)
+    	log frequency in seconds (default 5)
   -o string
     	log format syle (nginx|custom) (default "custom")
 $ ./fake-logs-app -f 1 -o nginx
