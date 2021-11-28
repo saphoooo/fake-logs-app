@@ -44,7 +44,7 @@ func main() {
 }
 
 func randomize(elements []string) string {
-	n := rand.Intn(len(elements) + 1)
+	n := rand.Intn(len(elements))
 	return elements[n]
 }
 
