@@ -24,11 +24,11 @@ However, you can change this behavior with args:
 ```bash
 $ ./fake-logs-app -h
 Usage of ./fake-logs-app:
-  -f int
-    	log frequency in seconds (default 5)
-  -o string
+  -i int
+    	log interval in seconds (default 5)
+  -f string
     	log format syle (nginx|custom) (default "custom")
-$ ./fake-logs-app -f 1 -o nginx
+$ ./fake-logs-app -i 1 -f nginx
 172.17.0.3 - - [2021/11/25:16:40:10 +0000] "PUT /api HTTP/1.1" 200 621 "http://example.com/" "curl/7.74.0" "89.77.53.67"
 172.17.0.3 - - [2021/11/25:16:40:12 +0000] "POST /logout HTTP/1.1" 200 364 "http://example.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) Gecko/20100101 Firefox/94.0" "89.121.60.251"
 172.17.0.3 - - [2021/11/25:16:40:14 +0000] "GET /api HTTP/1.1" 301 200 "http://example.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) Gecko/20100101 Firefox/94.0" "251.219.14.168"
@@ -49,10 +49,8 @@ There is an example `deployment.yaml` file with two containers and different opt
 containers:
 - name: custom
   image: saphoooo/fake-logs-app:latest
-  command: ['/fake-logs-app']
-  args: ['-f', '1']
+  args: ['-i', '1']
 - name: nginx
   image: saphoooo/fake-logs-app:latest
-  command: ['/fake-logs-app']
-  args: ['-o', 'nginx', '-f', '2']
+  args: ['-f', 'nginx', '-i', '2']
 ```

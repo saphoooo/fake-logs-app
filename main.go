@@ -19,8 +19,8 @@ var (
 )
 
 func main() {
-	format := flag.String("o", "custom", "log format syle (nginx|custom)")
-	frequency := flag.Int("f", 5, "log frequency in seconds")
+	format := flag.String("f", "custom", "log format syle (nginx|custom)")
+	interval := flag.Int("i", 5, "log interval in seconds")
 	flag.Parse()
 	rand.Seed(time.Now().UTC().UnixNano())
 
@@ -30,13 +30,13 @@ func main() {
 		for {
 
 			fmt.Printf("172.17.0.3 - - [%v] \"%s %s HTTP/1.1\" %s %s \"http://example.com/\" \"%s\" \"%s\"\n", time.Now().Format("02/Jan/2006:15:04:05 +0000"), randomize(methods), randomize(path), randomize(status), strconv.Itoa(rand.Intn(999-200)+200), randomize(agent), randAddress())
-			time.Sleep(time.Second * time.Duration(*frequency))
+			time.Sleep(time.Second * time.Duration(*interval))
 		}
 	case "custom":
 		// exemaple output: '[INFO] 2021/11/25 15:12:49 172.17.0.4 POST http://example.com/ 401 -- 218.214.93.28 Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) Gecko/20100101 Firefox/94.0'
 		for {
 			log.New(os.Stdout, randomize(prefix), log.Ldate|log.Ltime).Printf("172.17.0.4 %s http://example.com%s %s -- %s %s", randomize(methods), randomize(path), randomize(status), randAddress(), randomize(agent))
-			time.Sleep(time.Second * time.Duration(*frequency))
+			time.Sleep(time.Second * time.Duration(*interval))
 		}
 	default:
 		log.Fatal("format must be custom or nginx")
