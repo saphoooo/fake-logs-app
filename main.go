@@ -19,7 +19,7 @@ var (
 )
 
 func main() {
-	format := flag.String("f", "custom", "log format syle (nginx|custom)")
+	format := flag.String("f", "custom", "log format: (nginx|custom)")
 	interval := flag.Int("i", 5, "log interval in seconds")
 	flag.Parse()
 	rand.Seed(time.Now().UTC().UnixNano())
