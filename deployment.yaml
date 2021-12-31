@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fake-logs-team-yellow
+  name: fake-logs-custom
   labels:
-    app: fake-logs-team-yellow
+    app: fake-logs-custom
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fake-logs-team-yellow
+      app: fake-logs-custom
   template:
     metadata:
       labels:
-        app: fake-logs-team-yellow
+        app: fake-logs-custom
     spec:
       containers:
       - name: custom
@@ -22,20 +22,41 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fake-logs-team-green
+  name: fake-logs-nginx
   labels:
-    app: fake-logs-team-green
+    app: fake-logs-nginx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fake-logs-team-green
+      app: fake-logs-nginx
   template:
     metadata:
       labels:
-        app: fake-logs-team-green
+        app: fake-logs-nginx
     spec:
       containers:
       - name: nginx
         image: saphoooo/fake-logs-app:latest
         args: ['-f', 'nginx', '-i', '1']
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fake-logs-sensitive
+  labels:
+    app: fake-logs-sensitive
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fake-logs-sensitive
+  template:
+    metadata:
+      labels:
+        app: fake-logs-sensitive
+    spec:
+      containers:
+      - name: sensitive
+        image: saphoooo/fake-logs-app:latest
+        args: ['-f', 'sensitive', '-i', '1']

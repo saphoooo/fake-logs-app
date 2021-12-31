@@ -24,10 +24,10 @@ However, you can change this behavior with args:
 ```bash
 $ ./fake-logs-app -h
 Usage of ./fake-logs-app:
+   -f string
+    	log format: (custom|nginx|sensitive) (default "custom")
   -i int
     	log interval in seconds (default 5)
-  -f string
-    	log format: (nginx|custom) (default "custom")
 $ ./fake-logs-app -i 1 -f nginx
 172.17.0.3 - - [2021/11/25:16:40:10 +0000] "PUT /api HTTP/1.1" 200 621 "http://example.com/" "curl/7.74.0" "89.77.53.67"
 172.17.0.3 - - [2021/11/25:16:40:12 +0000] "POST /logout HTTP/1.1" 200 364 "http://example.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:94.0) Gecko/20100101 Firefox/94.0" "89.121.60.251"
