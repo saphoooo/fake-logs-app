@@ -71,8 +71,23 @@ func randAddress() string {
 }
 
 func randCardNumber() string {
-	// type visa: 4xxx xxxx xxxx xxxx
-	return "4" + fmt.Sprintf("%03d", rand.Intn(999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999))
+	var cardNumber string
+	randomNumber := rand.Intn(12)
+	if randomNumber < 4 {
+		// type visa: 4xxx xxxx xxxx xxxx
+		cardNumber = "4" + fmt.Sprintf("%03d", rand.Intn(999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999))
+	} else if randomNumber >= 4 && randomNumber < 7 {
+		// type mastercard: 5xxx xxxx xxxx xxxx
+		cardNumber = "5" + fmt.Sprintf("%03d", rand.Intn(999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999))
+	} else if randomNumber >= 7 && randomNumber < 10 {
+		// type discover: 6011 xxxx xxxx xxxx
+		cardNumber = "6011" + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999))
+	} else {
+		// type american express: 37x xxxx xxxx xxxx
+		cardNumber = "37" + fmt.Sprintf("%01d", rand.Intn(9)) + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999))
+	}
+
+	return cardNumber
 }
 
 type sensitive struct {
