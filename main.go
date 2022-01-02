@@ -41,15 +41,15 @@ func main() {
 			time.Sleep(time.Second * time.Duration(*interval))
 		}
 	case "sensitive":
-		// example output: '{"date":"2021-12-31T08:55:42.915121Z","transaction_id":410072900,"customer":"Flirtingzing","amount_in_us_dollar":"47851.78","card_number":"2689-8930-9105-9589","payment_ok":true}'
+		// example output: '{"date":"2021-12-31T08:55:42.915121Z","transaction_id":410072900,"customer":"Flirtingzing","amount_in_us_dollar":"851.70","card_number":"2689-8930-9105-9589","completed":true}'
 		for {
 			message := &sensitive{
 				Date:          time.Now().UTC(),
 				TransactionID: rand.Int31n(999999999),
 				Customer:      randomize(customer),
-				Amount:        strconv.Itoa(rand.Intn(99999)) + "." + strconv.Itoa(rand.Intn(99)),
+				Amount:        strconv.Itoa(rand.Intn(999)) + "." + strconv.Itoa(rand.Intn(9)) + "0",
 				CardNumber:    randCardNumber(),
-				PaymentOK:     rand.Intn(2) == 1,
+				Completed:     rand.Intn(2) == 1,
 			}
 			outpout, _ := json.Marshal(message)
 			fmt.Println(string(outpout))
@@ -71,7 +71,8 @@ func randAddress() string {
 }
 
 func randCardNumber() string {
-	return fmt.Sprintf("%04d", rand.Intn(9999)) + "-" + fmt.Sprintf("%04d", rand.Intn(9999)) + "-" + fmt.Sprintf("%04d", rand.Intn(9999)) + "-" + fmt.Sprintf("%04d", rand.Intn(9999))
+	// type visa: 4xxx xxxx xxxx xxxx
+	return "4" + fmt.Sprintf("%03d", rand.Intn(999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999)) + " " + fmt.Sprintf("%04d", rand.Intn(9999))
 }
 
 type sensitive struct {
@@ -80,5 +81,5 @@ type sensitive struct {
 	Customer      string    `json:"customer"`
 	Amount        string    `json:"amount_in_us_dollar"`
 	CardNumber    string    `json:"card_number"`
-	PaymentOK     bool      `json:"payment_ok"`
+	Completed     bool      `json:"completed"`
 }
