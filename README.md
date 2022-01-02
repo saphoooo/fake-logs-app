@@ -53,4 +53,7 @@ containers:
 - name: nginx
   image: saphoooo/fake-logs-app:latest
   args: ['-f', 'nginx', '-i', '2']
+- name: sensitive
+  image: saphoooo/fake-logs-app:latest
+  args: ['-f', 'sensitive', '-i', '3']
 ```
